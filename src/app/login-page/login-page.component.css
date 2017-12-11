@@ -1,0 +1,15 @@
+.header{
+    text-align: center;    
+    background: darkorchid;
+}
+
+.footer{
+    text-align: center;
+    background: darkorchid;
+}
+
+.main {
+    height: 100%;
+    filter: grayscale(50%) blur(2px);
+    -webkit-filter: grayscale(75%) blur(2px);
+}
