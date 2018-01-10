@@ -1,0 +1,12 @@
+.main {
+    height: 100%;
+    background: rgb(45, 0, 53);
+}
+
+.header {
+    background: darkorchid
+}
+
+.content-div{
+    padding-top: 60px;
+}

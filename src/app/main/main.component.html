@@ -1,0 +1,41 @@
+<div class="main">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded header">
+    <span class="align-middle">
+      <a class="navbar-brand" href="#">Japanese Helper</a>
+      <p class="text-center">User</p>
+      <button class="btn btn-outline-primary" type="button">
+        <span class="glyphicon glyphicon-log-out">Log out</span>
+      </button>
+    </span>
+  </nav>
+  <div class="container-fluid content-div">
+    <div class="row justify-content-center">
+      <div class="button-group">
+        <button class="btn btn-outline-primary btn-lg" (click)="kanaOpts()">
+          <span>
+            <strong>あ</strong>
+          </span>
+        </button>
+        <button class="btn btn-outline-primary btn-lg" (click)="kanaOpts()">
+          <span>
+            <strong>ア</strong>
+          </span>
+        </button>
+        <button class="btn btn-outline-primary btn-lg" (click)="kanjiOpts()">
+          <span>
+            <strong>漢字</strong>
+          </span>
+        </button>
+        <button class="btn btn-outline-primary btn-lg" (click)="vocabularyOpts()">
+          <span>
+            <strong>言葉</strong>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <router-outlet></router-outlet>
+        <!-- <kana-options></kana-options> -->
+    </div>
+  </div>
+</div>

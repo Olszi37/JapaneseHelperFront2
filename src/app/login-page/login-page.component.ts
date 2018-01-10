@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
-
-  imgBack: string;
+export class LoginPage implements OnInit {
   
-  constructor() {
-    this.imgBack = "/assets/img/jap-culture.jpg"; 
+  constructor(private router:Router) {
   }
 
   ngOnInit() {
+  }
+
+  goRegister(){
+    this.router.navigateByUrl('/register');
   }
 
 }

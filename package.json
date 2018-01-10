@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,9 +21,11 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "bootstrap": "^3.3.7",
+    "angular2-tooltip": "^3.1.0",
+    "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "ngx-bootstrap": "^1.9.3",
+    "popper.js": "^1.12.9",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

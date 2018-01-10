@@ -1,0 +1,38 @@
+<form novalidate (submit)="authenticate()">
+    <div class="row">
+        <div class="col">
+            <div class="form-group text-center">
+                <label for="login" class="form-label">
+                    <span>Login</span>
+                </label>
+                <input type="text" class="form-control form-control-lg" name="login" [(ngModel)]="login" (change)="checkLoginButton()"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col">
+            <div class="form-group text-center">
+                <label for="password" class="form-label">
+                    <span>Password</span>
+                </label>
+                <input type="password" class="form-control form-control-lg" name="password" [(ngModel)]="password" (change)="checkLoginButton()"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col">
+            <button class="btn btn-primary btn-block" type="submit" [disabled]="loginButtonDisabled">
+                <span>Log in</span>
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn btn-secondary btn-block" (click)="goRegister()">
+                <span>Register</span>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+    </div>
+</form>

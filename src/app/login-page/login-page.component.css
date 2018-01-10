@@ -1,15 +1,26 @@
 .header{
-    text-align: center;    
-    background: darkorchid;
-}
-
-.footer{
     text-align: center;
     background: darkorchid;
+    height: 100px;
 }
 
 .main {
+    height: calc(100% - 100px);
+    width: 100%;
+}
+
+.bg {
+    background-image: url('/assets/img/bg.gif');
+    background-size: cover;
+    display: block;
+    filter: blur(5px) grayscale(70%);
+    -webkit-filter: blur(5px) grayscale(70%);
     height: 100%;
-    filter: grayscale(50%) blur(2px);
-    -webkit-filter: grayscale(75%) blur(2px);
+    left: 0;
+    position: fixed;
+    right: 0;
+}
+
+.login {
+    padding-top: 15%;
 }
