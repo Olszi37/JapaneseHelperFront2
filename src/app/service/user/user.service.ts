@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
-  url = "http://localhost:8089/jhelper";
+  url = "http://localhost:8085/jhelper";
 
   constructor(private router:Router, private http:Http) { }
 
   authenticate(login, password){
-    let headers2 = new Headers();
-    headers2.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-    this.http.post("/authorize", this.getLoginDto(login, password), {headers: headers2}).subscribe((response:Response)=> {
+    this.http.post(this.url + "/authorize", this.getLoginDto(login, password)).subscribe((response:Response)=> {
       if(response.ok){
         let data = response.json();
-        console.log(data);
-        sessionStorage.setItem('token', data.idToken);
+
+        if(!sessionStorage.getItem('token')){
+          sessionStorage.setItem('token', data.id_token);
+        }
+
+        this.router.navigateByUrl("/main");
+        return null;
+      } else {
+        return false;
       }
-      //
     });
   }
 
@@ -32,8 +35,9 @@ export class UserService {
 
   createUser(login, password, email){
     this.http.post(this.url + "/user", this.getUserDto(login, password, email)).subscribe((response:Response)=>{
-      let data = response.json();
-      console.log(data);
+      if(response.ok){
+        this.router.navigateByUrl("/login");
+      }
     })
   }
 
@@ -43,6 +47,12 @@ export class UserService {
       'password': password,
       'email': email
     }
+  }
+
+  checkAuthentication(){
+    this.http.get(this.url + "/authenticate").subscribe((response:Response) => {
+      console.log(response);
+    })
   }
 
 }
