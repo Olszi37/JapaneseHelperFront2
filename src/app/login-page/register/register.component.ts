@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
 })
 export class Register {
 
-  constructor(private userService:UserService, private router:Router){
+  login;
+  password;
+  email;
 
+  constructor(private userService:UserService, private router:Router){
   }
 
   ngOnInit(){
@@ -19,7 +22,7 @@ export class Register {
   }
 
   register(){
-
+    this.userService.createUser(this.login, this.password, this.email);
   }
 
   cancel(){

@@ -14,8 +14,8 @@ export class UserService {
       if(response.ok){
         let data = response.json();
 
-        if(!sessionStorage.getItem('token')){
-          sessionStorage.setItem('token', data.id_token);
+        if(!sessionStorage.getItem("token")){
+          sessionStorage.setItem("token", data.id_token);
         }
 
         this.router.navigateByUrl("/main");
@@ -48,11 +48,4 @@ export class UserService {
       'email': email
     }
   }
-
-  checkAuthentication(){
-    this.http.get(this.url + "/authenticate").subscribe((response:Response) => {
-      console.log(response);
-    })
-  }
-
 }

@@ -10,7 +10,7 @@ export class HiraganaService {
 
   getAll(){
     let requestHeaders = new Headers();
-    requestHeaders.append("Authorization", "Bearer " + sessionStorage.getItem('token'));
+    requestHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
     this.http.get(this.url + "/all", {headers: requestHeaders}).subscribe((response:Response) => {
       if(response.ok){
         let data = response.json();

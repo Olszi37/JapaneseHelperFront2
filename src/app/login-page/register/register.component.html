@@ -6,7 +6,7 @@
           <label for="login">
             <span>Login</span>
           </label>
-          <input type="text" class="form-control" id="login"/>
+          <input type="text" class="form-control" id="login" name="formLogin" [(ngModel)]="login"/>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
           <label for="password">
             <span>Password</span>
           </label>
-          <input type="password" class="form-control" id="password"/>
+          <input type="password" class="form-control" id="password" name="formPassword" [(ngModel)]="password"/>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
           <label for="email">
             <span>Email</span>
           </label>
-          <input type="email" class="form-control" id="email"/>
+          <input type="email" class="form-control" id="email" name="formEmail" [(ngModel)]="email"/>
         </div>
       </div>
     </div>
