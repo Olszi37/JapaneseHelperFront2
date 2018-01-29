@@ -1,7 +1,7 @@
 <div class="contrainer-fluid">
   <div>
     <div>
-      <div class="row">
+      <div class="row" *ngIf="checkShowLevels()">
         <label>Level</label>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-outline-primary active">
@@ -34,10 +34,6 @@
           </label>
         </div>
       </div>
-      <div class="row">
-        <label>Repeats</label>
-        <input type="number" value="20">
-      </div>
     </div>
     <div>
       STATS
@@ -45,7 +41,7 @@
   </div>
   <div>
     <div class="row">
-      <button class="btn btn-outline-primary btn-lg" (click)="getAllHiraganas()">
+      <button class="btn btn-outline-primary btn-lg" (click)="startLearn()">
         <strong>Start learning!</strong>
       </button>
     </div>

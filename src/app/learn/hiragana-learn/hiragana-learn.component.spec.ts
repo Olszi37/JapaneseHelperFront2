@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VocabularyOptionsComponent } from './vocabulary-options.component';
+import { HiraganaLearnComponent } from './hiragana-learn.component';
 
-describe('VocabularyOptionsComponent', () => {
-  let component: VocabularyOptionsComponent;
-  let fixture: ComponentFixture<VocabularyOptionsComponent>;
+describe('HiraganaLearnComponent', () => {
+  let component: HiraganaLearnComponent;
+  let fixture: ComponentFixture<HiraganaLearnComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VocabularyOptionsComponent ]
+      declarations: [ HiraganaLearnComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VocabularyOptionsComponent);
+    fixture = TestBed.createComponent(HiraganaLearnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HiraganaService } from '../../service/hiragana/hiragana.service';
+import { Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'kana-options',
@@ -9,14 +11,28 @@ import { HiraganaService } from '../../service/hiragana/hiragana.service';
 })
 export class KanaOptionsComponent implements OnInit {
 
-  constructor(private hiraganaService:HiraganaService) { }
+  constructor(private hiraganaService:HiraganaService, private router:Router) { }
+
+  @Input()
+  type;
 
   ngOnInit() {
   }
 
-  getAllHiraganas(){
-    let hiraganas = this.hiraganaService.getAll();
-    console.log(hiraganas);
+  checkShowLevels() {
+    return this.type === 'KANJI' || this.type === 'VOCABULARY'; 
+  }
+
+  startLearn(){
+    if(this.type === 'HIRAGANA') {
+      this.router.navigateByUrl('/learn/hiragana');
+    } else if (this.type === 'KATAKANA') {
+      this.router.navigateByUrl('/learn/katakana')
+    } else if (this.type === 'KANJI') {
+      this.router.navigateByUrl('/learn/kanji')
+    } else {
+      this.router.navigateByUrl('/learn/vocabulary')
+    }
   }
 
 }

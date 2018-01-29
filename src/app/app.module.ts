@@ -11,31 +11,27 @@ import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { KanaOptionsComponent } from './main/kana-options/kana-options.component';
-import { KanjiOptionsComponent } from './main/kanji-options/kanji-options.component';
-import { VocabularyOptionsComponent } from './main/vocabulary-options/vocabulary-options.component';
 import { KanaLearnComponent } from './learn/kana-learn/kana-learn.component';
 import { KanjiLearnComponent } from './learn/kanji-learn/kanji-learn.component';
 import { VocabularyLearnComponent } from './learn/vocabulary-learn/vocabulary-learn.component';
 import { LearnComponent } from './learn/learn.component';
+import { HiraganaLearnComponent } from './learn/hiragana-learn/hiragana-learn.component';
+import { FlashcardComponent } from './learn/flashcard/flashcard.component';
 
 const routesConfig:Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component:LoginPage },
   {path:'register', component: Register},
-  {path:'main', component: MainComponent, children: [
-    {path: 'kana', component: KanaOptionsComponent},
-    {path: 'kanji', component: KanjiOptionsComponent},
-    {path: 'vocabulary', component: VocabularyOptionsComponent}
-  ]},
+  {path:'main', component: MainComponent},
   {path: 'learn', component: LearnComponent, children: [
-    {path: 'kana', component: KanaLearnComponent},
+    {path: 'hiragana', component: HiraganaLearnComponent},
+    {path: 'katakana', component: KanaLearnComponent},
     {path: 'kanji', component: KanjiLearnComponent},
     {path: 'vocabulary', component: VocabularyLearnComponent}
   ]}
 ];
 
 const routerModule = RouterModule.forRoot(routesConfig, {
-  enableTracing: true,
   useHash: true
 });
 
@@ -47,12 +43,12 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     Register,
     MainComponent,
     KanaOptionsComponent,
-    KanjiOptionsComponent,
-    VocabularyOptionsComponent,
     KanaLearnComponent,
     KanjiLearnComponent,
     VocabularyLearnComponent,
-    LearnComponent
+    LearnComponent,
+    HiraganaLearnComponent,
+    FlashcardComponent
   ],
   imports: [
     BrowserModule, 

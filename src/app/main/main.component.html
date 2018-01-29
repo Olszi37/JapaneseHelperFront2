@@ -11,22 +11,22 @@
   <div class="container-fluid content-div">
     <div class="row justify-content-center">
       <div class="button-group">
-        <button class="btn btn-outline-primary btn-lg" (click)="kanaOpts()">
+        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('HIRAGANA')">
           <span>
             <strong>あ</strong>
           </span>
         </button>
-        <button class="btn btn-outline-primary btn-lg" (click)="kanaOpts()">
+        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('KATAKANA')">
           <span>
             <strong>ア</strong>
           </span>
         </button>
-        <button class="btn btn-outline-primary btn-lg" (click)="kanjiOpts()">
+        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('KANJI')">
           <span>
             <strong>漢字</strong>
           </span>
         </button>
-        <button class="btn btn-outline-primary btn-lg" (click)="vocabularyOpts()">
+        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('VOCABULARY')">
           <span>
             <strong>言葉</strong>
           </span>
@@ -34,8 +34,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <router-outlet></router-outlet>
-        <!-- <kana-options></kana-options> -->
+        <kana-options [type]="type"></kana-options>
     </div>
   </div>
 </div>

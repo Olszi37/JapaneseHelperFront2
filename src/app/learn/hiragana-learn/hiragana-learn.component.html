@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <p>Progress: {{current + 1}}/{{total}}</p>
+  </div>
+  <div>
+    <div class="card text-center">
+      <div class="card-block">
+        <h4 class="card-title">
+          {{getCorrectSign()}}
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div>
+    <app-flashcard [type]="type" [method]="signFirst" [flashcards]="getFlashcard()"></app-flashcard>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="nextFlashcard()">Next</button>
+  </div>
+</div>

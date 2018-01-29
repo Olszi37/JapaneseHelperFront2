@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KanjiOptionsComponent } from './kanji-options.component';
+import { FlashcardComponent } from './flashcard.component';
 
-describe('KanjiOptionsComponent', () => {
-  let component: KanjiOptionsComponent;
-  let fixture: ComponentFixture<KanjiOptionsComponent>;
+describe('FlashcardComponent', () => {
+  let component: FlashcardComponent;
+  let fixture: ComponentFixture<FlashcardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KanjiOptionsComponent ]
+      declarations: [ FlashcardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KanjiOptionsComponent);
+    fixture = TestBed.createComponent(FlashcardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

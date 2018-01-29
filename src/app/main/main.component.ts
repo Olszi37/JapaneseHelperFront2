@@ -10,19 +10,13 @@ export class MainComponent implements OnInit {
 
   constructor(private router:Router) { }
 
+  type = 'HIRAGANA';
+
   ngOnInit() {
   }
 
-  kanaOpts(){
-    this.router.navigate(['main', 'kana']);
-  }
-
-  kanjiOpts(){
-    this.router.navigate(['main', 'kanji']);
-  }
-
-  vocabularyOpts(){
-    this.router.navigate(['main', 'vocabulary']);
+  changeType(type) {
+    this.type = type;
   }
 
 }
