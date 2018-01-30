@@ -17,6 +17,7 @@ import { VocabularyLearnComponent } from './learn/vocabulary-learn/vocabulary-le
 import { LearnComponent } from './learn/learn.component';
 import { HiraganaLearnComponent } from './learn/hiragana-learn/hiragana-learn.component';
 import { FlashcardComponent } from './learn/flashcard/flashcard.component';
+import { CardComponent } from './learn/card/card.component';
 
 const routesConfig:Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
@@ -48,7 +49,8 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     VocabularyLearnComponent,
     LearnComponent,
     HiraganaLearnComponent,
-    FlashcardComponent
+    FlashcardComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule, 

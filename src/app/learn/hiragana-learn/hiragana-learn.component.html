@@ -12,9 +12,10 @@
     </div>
   </div>
   <div>
-    <app-flashcard [type]="type" [method]="signFirst" [flashcards]="getFlashcard()"></app-flashcard>
+    <app-flashcard [type]="type" [method]="signFirst" [flashcards]="getFlashcard()" (onSelected)="onSelected($event)"></app-flashcard>
   </div>
   <div>
-    <button class="btn btn-primary" (click)="nextFlashcard()">Next</button>
+    <button class="btn btn-primary" (click)="nextFlashcard()" [disabled]="blockNextButton()">Next</button>
+    <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
   </div>
 </div>

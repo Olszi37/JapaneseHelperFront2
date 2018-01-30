@@ -32,8 +32,13 @@ export class RecordService {
   }
 
   saveFlashcards(type, records) {
+    console.log("WESZLO");
     this.http.post(this.url + this.getProperEndpoint(type), records, 
-    {headers: this.getHeaders()});
+    {headers: this.getHeaders()}).subscribe((response:Response) => {
+      if(response.ok) {
+        console.log("saved");
+      }
+    });
   }
 
   getHeaders() {

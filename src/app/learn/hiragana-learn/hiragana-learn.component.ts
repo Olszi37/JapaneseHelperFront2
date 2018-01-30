@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RecordService } from '../../service/record/record.service';
 import { Promise } from 'q';
+import { FlashcardService } from '../../service/flashcard/flashcard.service';
 
 @Component({
   selector: 'app-hiragana-learn',
   templateUrl: './hiragana-learn.component.html',
   styleUrls: ['./hiragana-learn.component.css'],
-  providers: [RecordService]
+  providers: [RecordService, FlashcardService]
 })
 export class HiraganaLearnComponent implements OnInit {
 
@@ -15,10 +16,11 @@ export class HiraganaLearnComponent implements OnInit {
   current = 0;
 
   flashcards = <any>[];
-
   preparedFlashcards = <any>[];
+  records = [];
+  selectedValue = null;
 
-  constructor(private recordService:RecordService) { 
+  constructor(private recordService:RecordService, private flashcardService:FlashcardService) { 
   }
 
   ngOnInit() {
@@ -27,46 +29,52 @@ export class HiraganaLearnComponent implements OnInit {
       this.flashcards = flashcardsIn;
       if(this.flashcards.length) {
         this.total = this.flashcards.length;
-        this.prepareFlashcards(flashcardsIn);
+        this.preparedFlashcards = this.flashcardService.prepareFlashcards(flashcardsIn);
       }
     });
   }
 
   getFlashcard() {
-    return this.preparedFlashcards[this.current];
+    if(this.current < this.total) {
+      return this.preparedFlashcards[this.current];
+    }
   }
 
   getCorrectSign() {
-    return this.flashcards[this.current].correct.reading;
+    if(this.current < this.total) {
+      return this.flashcards[this.current].correct.reading;
+    }
   }
 
   nextFlashcard() {
-    this.current++;
-  }
-
-  prepareFlashcards(flashcards) {
-    flashcards.forEach(card => {
-      let prepared = [];
-      prepared.push(card.correct);
-      card.other.forEach(other => {
-        prepared.push(other);
-      })
-      this.preparedFlashcards.push(this.shuffleArray(prepared));
-    });
-  }
-
-  shuffleArray(prepared) {
-    var m = prepared.length, temp, i;
-
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-
-      temp = prepared[m];
-      prepared[m] = prepared[i];
-      prepared[i] = temp;
+    if(this.current > this.total){
+      this.endLearningSession();
+    } else {
+      this.records.push(this.selectedValue);
+      this.selectedValue = null;
+      this.current++;
     }
+  }
 
-    return prepared;
+  cancel() {
+    this.saveRecords();
+  }
+
+  onSelected(value) {
+    this.selectedValue = value;
+  }
+
+  endLearningSession() {
+    this.saveRecords();
+  }
+
+  saveRecords() {
+    let records = this.flashcardService.calculateRecords(this.records, this.flashcards);
+    this.recordService.saveFlashcards(this.type, records);
+  }
+
+  blockNextButton() {
+    return !(this.selectedValue && this.current < this.total);
   }
 
 }

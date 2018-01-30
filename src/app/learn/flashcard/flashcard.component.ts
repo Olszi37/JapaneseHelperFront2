@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-flashcard',
@@ -15,6 +15,14 @@ export class FlashcardComponent implements OnInit {
   @Input()
   method;
 
+  @Output()
+  onSelected = new EventEmitter();
+
+  showValue: {
+    id: null,
+    value: null
+  };
+
   constructor() { }
 
   ngOnInit() {
@@ -22,11 +30,11 @@ export class FlashcardComponent implements OnInit {
 
   toShow(flashcard) {
     if(this.isKanaType()) {
-      return flashcard.sign;
+      return {id: flashcard.id, value: flashcard.sign}
     } else if (this.isKanjiType()) {
-      return flashcard.sign;
+      return {id: flashcard.id, value: flashcard.sign}
     } else if (this.isVocabularyType()) {
-      return flashcard.word;
+      return {id: flashcard.id, value: flashcard.word}
     }
   }
 
@@ -40,6 +48,10 @@ export class FlashcardComponent implements OnInit {
 
   isVocabularyType() {
     return this.type === 'VOCABULARY';
+  }
+
+  onSelect(value) {
+    this.onSelected.emit(value);
   }
 
 }
