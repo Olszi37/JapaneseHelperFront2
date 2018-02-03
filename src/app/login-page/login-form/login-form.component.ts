@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'login-form',
   templateUrl: './login-form.component.html',
-  styles: [],
+  styleUrls: ['../../app.component.css', './login-form.component.css'],
   encapsulation: ViewEncapsulation.Emulated,
   providers: [UserService]
 })

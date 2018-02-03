@@ -1,0 +1,12 @@
+.form-control {
+    background-color: rgb(239, 208, 248);
+}
+
+.btn-primary {
+    background-color: darkorchid;
+    border-color: rgb(239, 208, 248);
+}
+
+.btn-secondary {
+    background-color: rgb(239, 208, 248);
+}
