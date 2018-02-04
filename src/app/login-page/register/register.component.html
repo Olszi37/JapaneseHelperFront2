@@ -48,3 +48,5 @@
       </form>
     </div>
 </div>
+<modal-content *ngIf="isSuccessModalShown" [title]="successModalTitle" [content]="successModalContent" (onClose)="handleSuccess($event)"></modal-content>
+<modal-content *ngIf="isErrorModalShown" [title]="errorModalTitle" [content]="errorModalContent" (onClose)="handleError($event)"></modal-content>

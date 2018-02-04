@@ -18,6 +18,8 @@ import { LearnComponent } from './learn/learn.component';
 import { HiraganaLearnComponent } from './learn/hiragana-learn/hiragana-learn.component';
 import { FlashcardComponent } from './learn/flashcard/flashcard.component';
 import { CardComponent } from './learn/card/card.component';
+import {ModalModule} from "ngx-bootstrap/modal";
+import {ModalContentComponent} from "./login-page/register/modal/modal-content-component";
 
 const routesConfig:Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
@@ -28,8 +30,9 @@ const routesConfig:Routes = [
     {path: 'hiragana', component: HiraganaLearnComponent},
     {path: 'katakana', component: KanaLearnComponent},
     {path: 'kanji', component: KanjiLearnComponent},
-    {path: 'vocabulary', component: VocabularyLearnComponent}
-  ]}
+    {path: 'vocabulary', component: VocabularyLearnComponent},
+    ]},
+  {path: '**', redirectTo: 'login' }
 ];
 
 const routerModule = RouterModule.forRoot(routesConfig, {
@@ -50,16 +53,19 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     LearnComponent,
     HiraganaLearnComponent,
     FlashcardComponent,
-    CardComponent
+    CardComponent,
+    ModalContentComponent
   ],
   imports: [
-    BrowserModule, 
-    AlertModule.forRoot(), 
+    BrowserModule,
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
     routerModule,
     FormsModule,
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalContentComponent],
 })
 export class AppModule { }

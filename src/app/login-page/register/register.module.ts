@@ -10,7 +10,8 @@ import { UserService } from '../../service/user/user.service';
     Register
   ],
   imports: [
-    BrowserModule, AlertModule.forRoot()
+    BrowserModule,
+    AlertModule.forRoot()
   ],
   providers: [ UserService ],
   bootstrap: [Register]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UserService {
@@ -33,12 +34,13 @@ export class UserService {
     }
   }
 
-  createUser(login, password, email){
-    this.http.post(this.url + "/user", this.getUserDto(login, password, email)).subscribe((response:Response)=>{
+  createUser(login, password, email): Observable<any>{
+    return this.http.post(this.url + "/user", this.getUserDto(login, password, email)).map(res => res.json());
+     /* .subscribe((response:Response)=>{
       if(response.ok){
         this.router.navigateByUrl("/login");
       }
-    })
+    })*/
   }
 
   getUserDto(login, password, email){
