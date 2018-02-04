@@ -35,7 +35,7 @@ export class Register {
 
   register(){
     this.userService.createUser(this.login, this.password, this.email)
-      .subscribe( data => {
+      .subscribe( response => {
         this.showSuccessModal();
       }, err => {
         this.showErrorModal();

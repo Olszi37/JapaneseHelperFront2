@@ -20,6 +20,8 @@ import { FlashcardComponent } from './learn/flashcard/flashcard.component';
 import { CardComponent } from './learn/card/card.component';
 import {ModalModule} from "ngx-bootstrap/modal";
 import {ModalContentComponent} from "./login-page/register/modal/modal-content-component";
+import { StatsComponent } from "./main/stats/stats.component";
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 const routesConfig:Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
@@ -54,7 +56,8 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     HiraganaLearnComponent,
     FlashcardComponent,
     CardComponent,
-    ModalContentComponent
+    ModalContentComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     ModalModule.forRoot(),
     routerModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

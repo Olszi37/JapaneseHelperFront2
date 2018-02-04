@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+  <h4 class="font-weight-bold statsHeader text-center">{{getStatsHeader()}}</h4>
+  
+</div>
+
+<br>
+<div class="row"> 
+  <canvas baseChart
+              [data]="statsData"
+              [labels]="statsLabels"
+              [chartType]="type"
+              [legend]="false">
+            </canvas>
+</div>

@@ -1,12 +1,10 @@
-<div class="container-fluid">
-  <div class="row">
-      <!-- <div class="card text-center" *ngFor="let flashcard of flashcards">
+<div class="row">
+  <!-- <div class="card text-center" *ngFor="let flashcard of flashcards">
         <div class="card-block">
           {{toShow(flashcard)}}
         </div>
       </div> -->
-      <div *ngFor="let flashcard of flashcards">
-        <app-card [showValue]="toShow(flashcard)" (onSelect)="onSelect($event)"></app-card>
-      </div>
+  <div class="col-sm-4" *ngFor="let flashcard of flashcards">
+    <app-card [showValue]="toShow(flashcard)" (onSelect)="onSelect($event)"></app-card>
   </div>
 </div>

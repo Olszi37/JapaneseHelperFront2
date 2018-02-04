@@ -10,23 +10,9 @@ export class UserService {
 
   constructor(private router:Router, private http:Http) { }
 
-  authenticate(login, password): Observable<any>{
+  authenticate(login, password): Observable<Response> {
     return this.http.post(this.url + "/authorize", this.getLoginDto(login, password))
-      .map(res => res.json);
-      /*.subscribe((response:Response)=> {
-      if(response.ok){
-        let data = response.json();
-
-        if(!sessionStorage.getItem("token")){
-          sessionStorage.setItem("token", data.id_token);
-        }
-
-        this.router.navigateByUrl("/main");
-        return null;
-      } else {
-        return false;
-      }
-    });*/
+      .map((response:Response) => response);
   }
 
   getLoginDto(login, password){
@@ -37,12 +23,7 @@ export class UserService {
   }
 
   createUser(login, password, email): Observable<any>{
-    return this.http.post(this.url + "/user", this.getUserDto(login, password, email)).map(res => res.json());
-     /* .subscribe((response:Response)=>{
-      if(response.ok){
-        this.router.navigateByUrl("/login");
-      }
-    })*/
+    return this.http.post(this.url + "/user", this.getUserDto(login, password, email)).map(res => res);
   }
 
   getUserDto(login, password, email){

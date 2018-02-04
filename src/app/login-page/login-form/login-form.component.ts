@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input, Output } from '@angular/core';
 import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'login-form',
@@ -15,7 +16,9 @@ export class LoginForm implements OnInit {
   password;
 
   loginButtonDisabled = false;
-  errorOccurred = false;
+  unauthorized = false;
+  loginExists = false;
+  emailExists = false;
 
   constructor(private userService:UserService, private router:Router) { }
 
@@ -25,16 +28,15 @@ export class LoginForm implements OnInit {
   authenticate(){
     if(this.login && this.password){
       this.userService.authenticate(this.login, this.password)
-        .subscribe( data => {
-          this.errorOccurred = false;
+        .subscribe( response => {
+          let data = response.json();
+          this.unauthorized = false;
           if(!sessionStorage.getItem("token")){
             sessionStorage.setItem("token", data.id_token);
           }
-
           this.router.navigateByUrl("/main");
         }, err => {
-          this.errorOccurred = true;
-          console.log("err!");
+          this.unauthorized = true;
         })
     }
   }
@@ -48,7 +50,7 @@ export class LoginForm implements OnInit {
   }
 
   onFocus() {
-    this.errorOccurred = false;
+    this.unauthorized = false;
   }
 
 }

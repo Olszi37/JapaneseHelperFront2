@@ -6,7 +6,7 @@ import { FlashcardService } from '../../service/flashcard/flashcard.service';
 @Component({
   selector: 'app-hiragana-learn',
   templateUrl: './hiragana-learn.component.html',
-  styleUrls: ['./hiragana-learn.component.css'],
+  styleUrls: ['./hiragana-learn.component.css', '../../app.component.css', '../learn.component.css'],
   providers: [RecordService, FlashcardService]
 })
 export class HiraganaLearnComponent implements OnInit {
@@ -24,7 +24,7 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recordService.getFlashcards(this.type).subscribe((flashcards: any[]) => {
+    this.recordService.getFlashcards(this.type, null).subscribe((flashcards: any[]) => {
       let flashcardsIn = flashcards;
       this.flashcards = flashcardsIn;
       if(this.flashcards.length) {
@@ -47,8 +47,9 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   nextFlashcard() {
-    if(this.current > this.total){
+    if(this.current >= this.total - 1){
       this.endLearningSession();
+      this.current++;
     } else {
       this.records.push(this.selectedValue);
       this.selectedValue = null;
@@ -57,7 +58,9 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   cancel() {
-    this.saveRecords();
+    if (this.records.length != 0) {
+      this.saveRecords();
+    }
   }
 
   onSelected(value) {

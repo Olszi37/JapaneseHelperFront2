@@ -14,13 +14,13 @@ export class RecordService {
 
   constructor(private http:Http) { }
 
-  getFlashcards(type) {
-    this.getFlashcardsQuery(type);
+  getFlashcards(type, level) {
+    this.getFlashcardsQuery(type, level);
     return Observable.from(this.flashcardsStream);
   }
 
-  getFlashcardsQuery(type) {
-    this.http.get(this.url + this.getProperEndpoint(type), {headers: this.getHeaders()})
+  getFlashcardsQuery(type, level) {
+    this.http.get(this.url + this.getProperEndpoint(type, level), {headers: this.getHeaders()})
     .subscribe((response:Response) => {
       if(response.ok) {
         let data = response.json();
@@ -31,9 +31,12 @@ export class RecordService {
     })
   }
 
+  getStats(type, level): Observable<any> {
+    return this.http.get(this.url + this.getProperEndpoint(type, level) + "/stats",{headers: this.getHeaders()}).map(res => res.json());
+  }
+
   saveFlashcards(type, records) {
-    console.log("WESZLO");
-    this.http.post(this.url + this.getProperEndpoint(type), records, 
+    this.http.post(this.url + this.getProperEndpoint(type, null), records, 
     {headers: this.getHeaders()}).subscribe((response:Response) => {
       if(response.ok) {
         console.log("saved");
@@ -47,15 +50,23 @@ export class RecordService {
     return requestHeaders;
   }
 
-  getProperEndpoint(type) {
+  getProperEndpoint(type, level) {
     if(type === 'HIRAGANA') {
       return '/hiragana'
     } else if(type === 'KATAKANA') {
       return '/katakana'
     } else if(type === 'KANJI') {
-      return '/kanji'
+      if(level === null) {
+        return '/kanji';
+      } else {
+        return '/kanji/' + level;
+      }
     } else {
-      return '/vocabulary'
+      if(level === null) {
+        return '/vocabulary';
+      } else {
+        return '/vocabulary/' + level;
+      }
     }
   }
 

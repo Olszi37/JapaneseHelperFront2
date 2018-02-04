@@ -3,38 +3,52 @@
     <span class="align-middle">
       <a class="navbar-brand" href="#">Japanese Helper</a>
       <p class="text-center">User</p>
-      <button class="btn btn-outline-primary" type="button">
-        <span class="glyphicon glyphicon-log-out">Log out</span>
-      </button>
     </span>
   </nav>
   <div class="container-fluid content-div">
-    <div class="row justify-content-center">
-      <div class="button-group">
-        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('HIRAGANA')">
-          <span>
-            <strong>あ</strong>
-          </span>
-        </button>
-        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('KATAKANA')">
-          <span>
-            <strong>ア</strong>
-          </span>
-        </button>
-        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('KANJI')">
-          <span>
-            <strong>漢字</strong>
-          </span>
-        </button>
-        <button class="btn btn-outline-primary btn-lg" (click) = "changeType('VOCABULARY')">
-          <span>
-            <strong>言葉</strong>
-          </span>
-        </button>
+    <div class="row">
+      <div class="col-md-8">
+
+        <div class="row justify-content-center">
+          <h4 class="font-weight-bold text-center label">
+            Select your type
+          </h4>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="button-group">
+            <button class="btn btn-outline-primary btn-lg" (click)="changeType('HIRAGANA')">
+              <span>
+                <strong>あ</strong>
+              </span>
+            </button>
+            <button class="btn btn-outline-primary btn-lg" (click)="changeType('KATAKANA')">
+              <span>
+                <strong>ア</strong>
+              </span>
+            </button>
+            <button class="btn btn-outline-primary btn-lg" (click)="changeType('KANJI')">
+              <span>
+                <strong>漢字</strong>
+              </span>
+            </button>
+            <button class="btn btn-outline-primary btn-lg" (click)="changeType('VOCABULARY')">
+              <span>
+                <strong>言葉</strong>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <br>
+        <div class="row justify-content-center">
+          <kana-options [type]="type"></kana-options>
+        </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-        <kana-options [type]="type"></kana-options>
+
+      <div class="col-md-4">
+        <app-stats [flashcardType]="type" [level]="N5"></app-stats>
+      </div>
     </div>
   </div>
 </div>
