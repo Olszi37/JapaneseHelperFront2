@@ -10,8 +10,10 @@ export class UserService {
 
   constructor(private router:Router, private http:Http) { }
 
-  authenticate(login, password){
-    this.http.post(this.url + "/authorize", this.getLoginDto(login, password)).subscribe((response:Response)=> {
+  authenticate(login, password): Observable<any>{
+    return this.http.post(this.url + "/authorize", this.getLoginDto(login, password))
+      .map(res => res.json);
+      /*.subscribe((response:Response)=> {
       if(response.ok){
         let data = response.json();
 
@@ -24,7 +26,7 @@ export class UserService {
       } else {
         return false;
       }
-    });
+    });*/
   }
 
   getLoginDto(login, password){

@@ -15,6 +15,7 @@ export class LoginForm implements OnInit {
   password;
 
   loginButtonDisabled = false;
+  errorOccurred = false;
 
   constructor(private userService:UserService, private router:Router) { }
 
@@ -23,7 +24,18 @@ export class LoginForm implements OnInit {
 
   authenticate(){
     if(this.login && this.password){
-      this.userService.authenticate(this.login, this.password);
+      this.userService.authenticate(this.login, this.password)
+        .subscribe( data => {
+          this.errorOccurred = false;
+          if(!sessionStorage.getItem("token")){
+            sessionStorage.setItem("token", data.id_token);
+          }
+
+          this.router.navigateByUrl("/main");
+        }, err => {
+          this.errorOccurred = true;
+          console.log("err!");
+        })
     }
   }
 
@@ -33,6 +45,10 @@ export class LoginForm implements OnInit {
 
   goRegister(){
     this.router.navigateByUrl('/register');
+  }
+
+  onFocus() {
+    this.errorOccurred = false;
   }
 
 }
