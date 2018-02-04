@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from "@angular/core";
-import {BsModalRef, ModalDirective} from "ngx-bootstrap";
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
+import {ModalDirective} from "ngx-bootstrap";
 
 @Component({
   selector: 'modal-content',

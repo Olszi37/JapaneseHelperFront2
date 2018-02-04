@@ -1,12 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
 
-import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
-import { BsModalRef } from "ngx-bootstrap/modal/modal-options.class";
-import {ModalContentComponent} from "./modal/modal-content-component";
-import {ModalDirective} from "ngx-bootstrap";
 
 
 @Component({
