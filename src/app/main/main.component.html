@@ -2,7 +2,7 @@
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded header">
     <span class="align-middle">
       <a class="navbar-brand" href="#">Japanese Helper</a>
-      <p class="text-center">User</p>
+      <p class="text-center">{{loggedUser}}</p>
     </span>
   </nav>
   <div class="container-fluid content-div">
@@ -16,38 +16,42 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="button-group">
-            <button class="btn btn-outline-primary btn-lg" (click)="changeType('HIRAGANA')">
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary btn-lg" [class.active]="true">
+              <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'HIRAGANA'" #hiragana>
               <span>
                 <strong>あ</strong>
               </span>
-            </button>
-            <button class="btn btn-outline-primary btn-lg" (click)="changeType('KATAKANA')">
+            </label>
+            <label class="btn btn-outline-primary btn-lg">
+              <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KATAKANA'" #katakana>
               <span>
                 <strong>ア</strong>
               </span>
-            </button>
-            <button class="btn btn-outline-primary btn-lg" (click)="changeType('KANJI')">
+            </label>
+            <label class="btn btn-outline-primary btn-lg">
+              <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KANJI'" #kanji>
               <span>
                 <strong>漢字</strong>
               </span>
-            </button>
-            <button class="btn btn-outline-primary btn-lg" (click)="changeType('VOCABULARY')">
+            </label>
+            <label class="btn btn-outline-primary btn-lg">
+              <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'VOCABULARY'" #vocabulary>
               <span>
                 <strong>言葉</strong>
               </span>
-            </button>
+            </label>
           </div>
         </div>
 
         <br>
         <div class="row justify-content-center">
-          <kana-options [type]="type"></kana-options>
+          <kana-options [type]="type" (onSelectLevel)="onLevelSelect($event)"></kana-options>
         </div>
       </div>
 
       <div class="col-md-4">
-        <app-stats [flashcardType]="type" [level]="N5"></app-stats>
+        <app-stats [flashcardType]="type" [level]="'N5'"></app-stats>
       </div>
     </div>
   </div>

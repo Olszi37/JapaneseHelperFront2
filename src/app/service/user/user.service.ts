@@ -33,4 +33,14 @@ export class UserService {
       'email': email
     }
   }
+
+  getLoggedUserLogin(): Observable<Response> {
+    return this.http.get(this.url + "/logged-user", {headers: this.getHeaders()}).map((response:Response) => response);
+  }
+
+  getHeaders() {
+    let requestHeaders = new Headers();
+    requestHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
+    return requestHeaders;
+  }
 }

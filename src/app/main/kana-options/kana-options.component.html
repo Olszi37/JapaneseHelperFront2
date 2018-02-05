@@ -1,41 +1,49 @@
 <div class="contrainer-fluid">
-  
+
   <div class="row" *ngIf="checkShowLevels()">
-    <label>Level</label>
-    <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-outline-primary" [class.active]="isN5">
-        <input type="checkbox" [(ngModel)]="isN5" checked autocomplete="off" name="level" #n5>N5
-      </label>
-      <label class="btn btn-outline-primary" [class.active]="isN4">
-        <input type="checkbox" autocomplete="off" [(ngModel)]="isN4" name="level" #n4 disabled>N4
-      </label>
-      <label class="btn btn-outline-primary" [class.active]="isN3">
-        <input type="checkbox" autocomplete="off" [(ngModel)]="isN3" name="level" #n3 disabled>N3
-      </label>
-      <label class="btn btn-outline-primary" [class.active]="isN2">
-        <input type="checkbox" autocomplete="off" [(ngModel)]="isN2" name="level" #n2 disabled>N2
-      </label>
-      <label class="btn btn-outline-primary" [class.active]="isN1">
-        <input type="checkbox" autocomplete="off" [(ngModel)]="isN1" name="level" #n1 disabled>N1
-      </label>
+    <div class="col-lg-2">
+      <label class="font-weight-bold label">Level</label>
+    </div>
+    <div class="col-lg-6">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-outline-primary" [class.active]="true">
+          <input type="checkbox" [(ngModel)]="level" [value]="'N5'" checked autocomplete="off" name="level" #n5 (click)="levelSelect()">N5
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="checkbox" autocomplete="off" [(ngModel)]="level" [value]="'N4'" name="level" #n4 disabled (click)="levelSelect()">N4
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="checkbox" autocomplete="off" [(ngModel)]="level" [value]="'N3'" name="level" #n3 disabled (click)="levelSelect()">N3
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="checkbox" autocomplete="off" [(ngModel)]="level" [value]="'N2'" name="level" #n2 disabled (click)="levelSelect()">N2
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="checkbox" autocomplete="off" [(ngModel)]="level" [value]="'N1'" name="level" #n1 disabled (click)="levelSelect()">N1
+        </label>
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <label>Type</label>
-    <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by signs" [class.active]="selectedRadio == 'option1'">
-        <input type="radio" name="options" id="option1" [value]="'option1'" [(ngModel)]="selectedRadio" autocomplete="off" checked>
-        <strong> あ　-> a </strong>
-      </label>
-      <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by readings" [class.active]="selectedRadio == 'option2'">
-        <input type="radio" name="options" id="option2" [value]="'option2'" [(ngModel)]="selectedRadio" autocomplete="off">
-        <strong> a -> あ </strong>
-      </label>
+    <div class="col-lg-2">
+      <label class="font-weight-bold label">Flashcard side</label>
+    </div>
+    <div class="col-lg-6">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by signs" [class.active]="selectedRadio == 'option1'">
+          <input type="radio" name="options" id="option1" [value]="'option1'" [(ngModel)]="selectedRadio" autocomplete="off" checked>
+          <strong> あ　-> a </strong>
+        </label>
+        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by readings" [class.active]="selectedRadio == 'option2'">
+          <input type="radio" name="options" id="option2" [value]="'option2'" [(ngModel)]="selectedRadio" autocomplete="off">
+          <strong> a -> あ </strong>
+        </label>
+      </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <button class="btn btn-outline-primary btn-lg" (click)="startLearn()">
       <strong>Start learning!</strong>
     </button>

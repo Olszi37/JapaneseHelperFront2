@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HiraganaService } from '../../service/hiragana/hiragana.service';
-import { Input } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,13 +16,12 @@ export class KanaOptionsComponent implements OnInit {
   @Input()
   type;
 
-  isN1: boolean = false;
-  isN2: boolean = false;
-  isN3: boolean = false;
-  isN4: boolean = false;
-  isN5: boolean = true;
+  level:string = "N5";
 
-  selectedRadio: string = 'option2'; //you can bind to somehing you want by [value]= "wartosc"
+  @Output()
+  onSelectLevel = new EventEmitter()
+
+  selectedRadio: string = 'option1';
 
   ngOnInit() {
   }
@@ -37,10 +36,14 @@ export class KanaOptionsComponent implements OnInit {
     } else if (this.type === 'KATAKANA') {
       this.router.navigateByUrl('/learn/katakana')
     } else if (this.type === 'KANJI') {
-      this.router.navigateByUrl('/learn/kanji')
+      this.router.navigateByUrl('/learn/kanji/' + this.level)
     } else {
-      this.router.navigateByUrl('/learn/vocabulary')
+      this.router.navigateByUrl('/learn/vocabulary/' + this.level)
     }
+  }
+
+  levelSelect() {
+    this.onSelectLevel.emit(this.level);
   }
 
 }

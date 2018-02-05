@@ -3,6 +3,14 @@
     border-color: rgb(239, 208, 248);
 }
 
-.btn-outline-primary:hover, .btn-outline-primary:checked {
+.btn-outline-primary:hover {
     background-color: darkorchid;
+}
+
+.btn-outline-primary.active, .btn-outline-primary:active {
+    background-color: darkorchid;
+}
+
+.label {
+    color: rgb(239, 208, 248);
 }
