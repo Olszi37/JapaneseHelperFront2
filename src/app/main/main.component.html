@@ -17,25 +17,25 @@
 
         <div class="row justify-content-center">
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-primary btn-lg" [class.active]="true">
+            <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('HIRAGANA')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'HIRAGANA'" #hiragana>
               <span>
                 <strong>あ</strong>
               </span>
             </label>
-            <label class="btn btn-outline-primary btn-lg">
+            <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('KATAKANA')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KATAKANA'" #katakana>
               <span>
                 <strong>ア</strong>
               </span>
             </label>
-            <label class="btn btn-outline-primary btn-lg">
+            <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('KANJI')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KANJI'" #kanji>
               <span>
                 <strong>漢字</strong>
               </span>
             </label>
-            <label class="btn btn-outline-primary btn-lg">
+            <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('VOCABULARY')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'VOCABULARY'" #vocabulary>
               <span>
                 <strong>言葉</strong>

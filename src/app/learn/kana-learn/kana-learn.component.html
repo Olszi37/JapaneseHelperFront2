@@ -1,3 +1,40 @@
-<p>
-  kana-learn works!
-</p>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+
+      <div class="row">
+        <div class="col text-center">
+          <p class="progressLabel">Progress: {{current + 1}}/{{total}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card text-center frontFlashcard">
+            <div class="card-block">
+              <h4 class="card-title">
+                {{getCorrectSign()}}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-flashcard [type]="type" [method]="signFirst" [flashcards]="getFlashcard()" (onSelected)="onSelected($event)"></app-flashcard>
+
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary btn-block" (click)="nextFlashcard()" [disabled]="blockNextButton()">Next</button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-secondary btn-block" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<modal-content *ngIf="isDoneModalShown" [title]="doneTitle" [content]="doneContent" (onClose)="handleDone($event)"></modal-content>
+<yes-no-modal-content *ngIf="isExitModalShown" [title]="exitTitle" [content]="exitContent" (onYes)="handleExitWithYes($event)" (onNo)="handleExitWithNo($event)"></yes-no-modal-content>

@@ -14,8 +14,8 @@ import {ModalDirective} from "ngx-bootstrap";
             <p>{{content}}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-right" aria-label="No" (click)="onNoClicked()">Ok</button>
-            <button type="button" class="btn btn-primary pull-right" aria-label="Yes" (click)="onYesClicked()">Ok</button>
+            <button type="button" class="btn btn-primary pull-right" aria-label="No" (click)="onNoClicked()">No</button>
+            <button type="button" class="btn btn-primary pull-right" aria-label="Yes" (click)="onYesClicked()">Yes</button>
           </div>
         </div>
       </div>

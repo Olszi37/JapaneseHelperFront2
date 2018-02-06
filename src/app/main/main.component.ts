@@ -35,4 +35,8 @@ export class MainComponent implements OnInit {
     this.level = level;
   }
 
+  isActive(type) {
+    return this.type === type;
+  }
+
 }

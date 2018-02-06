@@ -36,9 +36,9 @@ export class KanaOptionsComponent implements OnInit {
     } else if (this.type === 'KATAKANA') {
       this.router.navigateByUrl('/learn/katakana')
     } else if (this.type === 'KANJI') {
-      this.router.navigateByUrl('/learn/kanji/' + this.level)
+      this.router.navigateByUrl('/learn/kanji?level=' + this.level)
     } else {
-      this.router.navigateByUrl('/learn/vocabulary/' + this.level)
+      this.router.navigateByUrl('/learn/vocabulary?level=' + this.level)
     }
   }
 

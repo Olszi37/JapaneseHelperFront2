@@ -48,6 +48,16 @@ export class FlashcardService {
     return userRecordDtos;
   }
 
+  calculateLearnInfo(records, total) {
+    let totalCorrect: number = 0;
+    for(let record of records) {
+      if (record.correct) {
+        totalCorrect++;
+      }
+    }
+    return 'Correct ' + totalCorrect + ' of ' + total;
+  }
+
 }
 
 export class UserRecordDto {

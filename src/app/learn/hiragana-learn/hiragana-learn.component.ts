@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordService } from '../../service/record/record.service';
 import { Promise } from 'q';
 import { FlashcardService } from '../../service/flashcard/flashcard.service';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-hiragana-learn',
@@ -24,11 +24,11 @@ export class HiraganaLearnComponent implements OnInit {
   isDoneModalShown: boolean = false;
   isExitModalShown: boolean = false; //modal
 
-  doneContent: string = ''; //tutaj cos do wyswietlenia co ma byc w modalu co tam chcesz;
-  exitContent: string = 'are you sure to stop current session?';
+  doneContent: string = 'Correct 0 of 0'; //tutaj cos do wyswietlenia co ma byc w modalu co tam chcesz;
+  exitContent: string = 'Are you sure to stop current session?';
 
-  doneTitle: string = ''; //daj se tytuły jakie chcesz nie wiem co tu dać;
-  exitTitle: string = '';
+  doneTitle: string = 'End of session'; //daj se tytuły jakie chcesz nie wiem co tu dać;
+  exitTitle: string = 'Cancel session';
 
   constructor(private recordService:RecordService, private flashcardService:FlashcardService,  private router:Router) {
   }
@@ -86,6 +86,7 @@ export class HiraganaLearnComponent implements OnInit {
 
   saveRecords() {
     let records = this.flashcardService.calculateRecords(this.records, this.flashcards);
+    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.total);
     this.recordService.saveFlashcards(this.type, records);
   }
 
@@ -110,10 +111,11 @@ export class HiraganaLearnComponent implements OnInit {
     //tu stworz sobie funkcje tam wyliczającą co trzeba i wyswietlająca co chcesz w modalu
     //jak chcesz to w modal-content-component mozesz pozmieniac co tam chcesz zeby bylo przekazywane
     //bo ja nie mam jak przetestować i w sumie nie wiem jak działa ta cała nauka znaków
+    this.isExitModalShown = false
     this.showDoneModal();
   }
 
   handleExitWithNo(event) {
-    this.isExitModalShown = true; //schowaj modal - kontynuuj nauke
+    this.isExitModalShown = false; //schowaj modal - kontynuuj nauke
   }
 }
