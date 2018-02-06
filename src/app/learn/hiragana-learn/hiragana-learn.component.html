@@ -52,3 +52,6 @@
     <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
   </div> -->
 <!-- </div> -->
+
+<modal-content *ngIf="isDoneModalShown" [title]="doneTitle" [content]="doneContent" (onClose)="handleDone($event)"></modal-content>
+<yes-no-modal-content *ngIf="isExitModalShown" [title]="exitTitle" [content]="exitContent" (onYes)="handleExitWithYes($event)" (onNo)="handleExitWithNo($event)"></yes-no-modal-content>

@@ -18,10 +18,11 @@ import { LearnComponent } from './learn/learn.component';
 import { HiraganaLearnComponent } from './learn/hiragana-learn/hiragana-learn.component';
 import { FlashcardComponent } from './learn/flashcard/flashcard.component';
 import { CardComponent } from './learn/card/card.component';
-import {ModalModule} from "ngx-bootstrap/modal";
-import {ModalContentComponent} from "./login-page/register/modal/modal-content-component";
+import { ModalModule } from "ngx-bootstrap/modal";
 import { StatsComponent } from "./main/stats/stats.component";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ModalContentComponent } from "./modal/modal-content-component";
+import { YesNoModalComponent } from "./modal/yes-no-modal-component";
 
 const routesConfig:Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
@@ -57,6 +58,7 @@ const routerModule = RouterModule.forRoot(routesConfig, {
     FlashcardComponent,
     CardComponent,
     ModalContentComponent,
+    YesNoModalComponent,
     StatsComponent
   ],
   imports: [

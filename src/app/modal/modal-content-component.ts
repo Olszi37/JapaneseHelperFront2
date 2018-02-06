@@ -20,7 +20,7 @@ import {ModalDirective} from "ngx-bootstrap";
       </div>
     </div>
   `,
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../app.component.css'],
 })
 
 export class ModalContentComponent implements OnInit {
