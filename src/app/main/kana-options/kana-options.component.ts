@@ -21,7 +21,7 @@ export class KanaOptionsComponent implements OnInit {
   @Output()
   onSelectLevel = new EventEmitter()
 
-  selectedRadio: string = 'option1';
+  selectedOption: string = 'signFirst';
 
   ngOnInit() {
   }
@@ -32,18 +32,22 @@ export class KanaOptionsComponent implements OnInit {
 
   startLearn(){
     if(this.type === 'HIRAGANA') {
-      this.router.navigateByUrl('/learn/hiragana');
+      this.router.navigateByUrl('/learn/hiragana?option=' + this.selectedOption);
     } else if (this.type === 'KATAKANA') {
-      this.router.navigateByUrl('/learn/katakana')
+      this.router.navigateByUrl('/learn/katakana?option=' + this.selectedOption)
     } else if (this.type === 'KANJI') {
-      this.router.navigateByUrl('/learn/kanji?level=' + this.level)
+      this.router.navigateByUrl('/learn/kanji?level=' + this.level + '&option=' + this.selectedOption)
     } else {
-      this.router.navigateByUrl('/learn/vocabulary?level=' + this.level)
+      this.router.navigateByUrl('/learn/vocabulary?level=' + this.level + '&option=' + this.selectedOption)
     }
   }
 
   levelSelect() {
     this.onSelectLevel.emit(this.level);
+  }
+
+  isRadioActive(option) {
+    return this.selectedOption === option;
   }
 
 }

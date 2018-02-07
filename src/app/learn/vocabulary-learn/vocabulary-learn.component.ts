@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordService } from '../../service/record/record.service';
 import { Promise } from 'q';
 import { FlashcardService } from '../../service/flashcard/flashcard.service';
-import { Router,  ActivatedRoute } from "@angular/router";
+import { Router,  ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vocabulary-learn',
@@ -12,10 +12,11 @@ import { Router,  ActivatedRoute } from "@angular/router";
 })
 export class VocabularyLearnComponent implements OnInit {
 
-  type = 'VOCABULARY';
-  level = 'N5';
-  total = 0;
-  current = 0;
+  type: string = 'VOCABULARY';
+  level: string = 'N5';
+  option: string = 'signFirst';
+  total: number = 0;
+  current: number = 0;
 
   flashcards = <any>[];
   preparedFlashcards = <any>[];
@@ -37,6 +38,7 @@ export class VocabularyLearnComponent implements OnInit {
 
   ngOnInit() {
     this.level = this.activatedRoute.snapshot.queryParams['level'];
+    this.option = this.activatedRoute.snapshot.queryParams['option'];
     this.recordService.getFlashcards(this.type, this.level).subscribe((flashcards: any[]) => {
       let flashcardsIn = flashcards;
       this.flashcards = flashcardsIn;
@@ -55,7 +57,21 @@ export class VocabularyLearnComponent implements OnInit {
 
   getCorrectSign() {
     if(this.current < this.total) {
+      return this.getProperSide();
+    }
+  }
+
+  getProperSide() {
+    if (this.option === 'signFirst') {
+      return this.flashcards[this.current].correct.word;
+    } else {
       return this.flashcards[this.current].correct.meaning;
+    }
+  }
+
+  getHint() {
+    if(this.option === 'signFirst') {
+      return this.flashcards[this.current].correct.furigana;
     }
   }
 

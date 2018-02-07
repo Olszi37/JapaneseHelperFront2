@@ -31,12 +31,12 @@
     </div>
     <div class="col-lg-6">
       <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by signs" [class.active]="selectedRadio == 'option1'">
-          <input type="radio" name="options" id="option1" [value]="'option1'" [(ngModel)]="selectedRadio" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by signs" [class.active]="isRadioActive('signFirst')">
+          <input type="radio" name="options" id="option1" [value]="'signFirst'" [(ngModel)]="selectedOption" autocomplete="off" checked>
           <strong> あ　-> a </strong>
         </label>
-        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by readings" [class.active]="selectedRadio == 'option2'">
-          <input type="radio" name="options" id="option2" [value]="'option2'" [(ngModel)]="selectedRadio" autocomplete="off">
+        <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by readings" [class.active]="isRadioActive('meaningFirst')">
+          <input type="radio" name="options" id="option2" [value]="'meaningFirst'" [(ngModel)]="selectedOption" autocomplete="off">
           <strong> a -> あ </strong>
         </label>
       </div>

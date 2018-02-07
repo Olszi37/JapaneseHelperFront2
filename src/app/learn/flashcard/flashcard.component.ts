@@ -20,7 +20,8 @@ export class FlashcardComponent implements OnInit {
 
   showValue: {
     id: null,
-    value: null
+    value: null,
+    hint: null
   };
 
   constructor() { }
@@ -30,12 +31,32 @@ export class FlashcardComponent implements OnInit {
 
   toShow(flashcard) {
     if(this.isKanaType()) {
-      return {id: flashcard.id, value: flashcard.sign}
+      if(this.isSignFirstMethod()) {
+        return {id: flashcard.id, value: flashcard.reading}
+      } else {
+        return {id: flashcard.id, value: flashcard.sign}
+      }
     } else if (this.isKanjiType()) {
-      return {id: flashcard.id, value: flashcard.sign}
+      if(this.isSignFirstMethod()) {
+        return {id: flashcard.id, value: flashcard.meaning}
+      } else {
+        return {id: flashcard.id, value: flashcard.sign, hint: flashcard.onyomi + ' | ' + flashcard.kunyomi}
+      }
     } else if (this.isVocabularyType()) {
-      return {id: flashcard.id, value: flashcard.word}
+      if(this.isSignFirstMethod()) {
+        return {id: flashcard.id, value: flashcard.meaning}
+      } else {
+        return {id: flashcard.id, value: flashcard.word, hint: this.getFurigana(flashcard.furigana)}
+      }
     }
+  }
+
+  getFurigana(furigana) {
+    return furigana !== '' ? furigana : "";
+  }
+
+  isSignFirstMethod() {
+    return this.method === 'signFirst';
   }
 
   isKanaType() {

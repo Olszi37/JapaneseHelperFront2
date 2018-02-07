@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordService } from '../../service/record/record.service';
 import { Promise } from 'q';
 import { FlashcardService } from '../../service/flashcard/flashcard.service';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hiragana-learn',
@@ -12,9 +12,10 @@ import { Router } from "@angular/router";
 })
 export class HiraganaLearnComponent implements OnInit {
 
-  type = 'HIRAGANA';
-  total = 0;
-  current = 0;
+  type: string = 'HIRAGANA';
+  option: string = 'signFirst';
+  total: number = 0;
+  current: number = 0;
 
   flashcards = <any>[];
   preparedFlashcards = <any>[];
@@ -30,10 +31,11 @@ export class HiraganaLearnComponent implements OnInit {
   doneTitle: string = 'End of session'; //daj se tytuły jakie chcesz nie wiem co tu dać;
   exitTitle: string = 'Cancel session';
 
-  constructor(private recordService:RecordService, private flashcardService:FlashcardService,  private router:Router) {
+  constructor(private recordService:RecordService, private flashcardService:FlashcardService,  private router:Router, private activatedRoute:ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.option = this.activatedRoute.snapshot.queryParams['option'];
     this.recordService.getFlashcards(this.type, null).subscribe((flashcards: any[]) => {
       let flashcardsIn = flashcards;
       this.flashcards = flashcardsIn;
@@ -52,6 +54,14 @@ export class HiraganaLearnComponent implements OnInit {
 
   getCorrectSign() {
     if(this.current < this.total) {
+      return this.getProperSide();
+    }
+  }
+
+  getProperSide() {
+    if (this.option === 'signFirst') {
+      return this.flashcards[this.current].correct.sign;
+    } else {
       return this.flashcards[this.current].correct.reading;
     }
   }
