@@ -1,9 +1,8 @@
 <div class="main">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded header">
-    <span class="align-middle">
-      <a class="navbar-brand" href="#">Japanese Helper</a>
-      <p class="text-center">{{loggedUser}}</p>
-    </span>
+  <nav class="navbar navbar-light bg-faded header">
+    <a href="#">
+      <img class="logo float-left" src="/assets/img/logo.png" />
+    </a>
   </nav>
   <div class="container-fluid content-div">
     <div class="row">
@@ -19,25 +18,25 @@
           <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('HIRAGANA')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'HIRAGANA'" #hiragana>
-              <span>
+              <span class="jp-font">
                 <strong>あ</strong>
               </span>
             </label>
             <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('KATAKANA')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KATAKANA'" #katakana>
-              <span>
+              <span class="jp-font">
                 <strong>ア</strong>
               </span>
             </label>
             <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('KANJI')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'KANJI'" #kanji>
-              <span>
+              <span class="jp-font">
                 <strong>漢字</strong>
               </span>
             </label>
             <label class="btn btn-outline-primary btn-lg" [class.active]="isActive('VOCABULARY')">
               <input type="radio" autocomplete="off" name="type" [(ngModel)]="type" [value]="'VOCABULARY'" #vocabulary>
-              <span>
+              <span class="jp-font">
                 <strong>言葉</strong>
               </span>
             </label>

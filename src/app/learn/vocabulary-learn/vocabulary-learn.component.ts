@@ -62,7 +62,7 @@ export class VocabularyLearnComponent implements OnInit {
   }
 
   getProperSide() {
-    if (this.option === 'signFirst') {
+    if (this.isSignOption()) {
       return this.flashcards[this.current].correct.word;
     } else {
       return this.flashcards[this.current].correct.meaning;
@@ -70,9 +70,13 @@ export class VocabularyLearnComponent implements OnInit {
   }
 
   getHint() {
-    if(this.option === 'signFirst') {
+    if(this.isSignOption()) {
       return this.flashcards[this.current].correct.furigana;
     }
+  }
+
+  isSignOption() {
+    return this.option === 'signFirst';
   }
 
   nextFlashcard() {
@@ -105,7 +109,7 @@ export class VocabularyLearnComponent implements OnInit {
 
   saveRecords() {
     let records = this.flashcardService.calculateRecords(this.records, this.flashcards);
-    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.total);
+    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.current - 1);
     this.recordService.saveFlashcards(this.type, records);
   }
 

@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-sm-4" *ngFor="let flashcard of flashcards">
-    <app-card [showValue]="toShow(flashcard)" (onSelect)="onSelect($event)"></app-card>
+    <app-card [showValue]="toShow(flashcard)" (onSelect)="onSelect($event)" [method]="method"></app-card>
   </div>
 </div>

@@ -53,11 +53,15 @@ export class KanaLearnComponent implements OnInit {
   }
 
   getProperSide() {
-    if (this.option === 'signFirst') {
+    if (this.isSignOption()) {
       return this.flashcards[this.current].correct.sign;
     } else {
       return this.flashcards[this.current].correct.reading;
     }
+  }
+
+  isSignOption() {
+    return this.option === 'signFirst';
   }
 
   nextFlashcard() {
@@ -90,7 +94,7 @@ export class KanaLearnComponent implements OnInit {
 
   saveRecords() {
     let records = this.flashcardService.calculateRecords(this.records, this.flashcards);
-    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.total);
+    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.current - 1);
     this.recordService.saveFlashcards(this.type, records);
   }
 

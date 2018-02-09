@@ -1,11 +1,11 @@
 <br>
 <div class="card text-center">
-  <div class="card-block" (click)="select()">
+  <div class="card-block" (click)="select()" [class.jp-font]="!isSignOption()">
     <h4 class="card-title showValue">
-      {{showValue.value}}
+      <strong>{{showValue.value}}</strong>
     </h4>
     <p class="card-text">
-      {{showValue.hint}}
+      <strong>{{showValue.hint}}</strong>
     </p>
   </div>
 </div>

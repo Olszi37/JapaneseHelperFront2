@@ -3,8 +3,13 @@
     background: rgb(45, 0, 53);
 }
 
+.logo {
+    height: 90px;
+}
+
 .header {
-    background: darkorchid
+    background: darkorchid;
+    height: 100px;
 }
 
 .content-div{
@@ -18,4 +23,8 @@
 .progressLabel {
     color: rgb(239, 208, 248);
     font-weight: bold;
+}
+
+.jp-font {
+    font-family: Meiryo;
 }

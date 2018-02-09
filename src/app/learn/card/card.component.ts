@@ -11,6 +11,9 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   @Input()
+  method: string = 'signFirst';
+
+  @Input()
   showValue: {
     id:null,
     value: null
@@ -24,6 +27,10 @@ export class CardComponent implements OnInit {
 
   select() {
     this.onSelect.emit(this.showValue.id);
+  }
+
+  isSignOption() {
+    return this.method === 'signFirst';
   }
 
 }

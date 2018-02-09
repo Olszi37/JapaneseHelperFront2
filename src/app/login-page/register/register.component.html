@@ -1,52 +1,56 @@
 <div class="bg"></div>
 <nav class="navbar navbar-light bg-faded fixed-top header">
-    <h1 class="text-center">Japanese helper</h1>
+  <div class="text-center">
+    <a href="#">
+      <img class="logo" src="/assets/img/logo.png" />
+    </a>
+  </div>
 </nav>
 <div class="container-fluid main">
-    <div class="row justify-content-center register">
-      <form novalidate (submit)="register()">
+  <div class="row justify-content-center register">
+    <form novalidate (submit)="register()">
 
-        <div class="row">
-            <div class="form-group text-center">
-              <label for="login" class="form-label">
-                <span class="font-weight-bold">Login</span>
-              </label>
-              <input type="text" class="form-control form-control-lg" id="login" name="formLogin" [(ngModel)]="login"/>
-            </div>
+      <div class="row">
+        <div class="form-group text-center">
+          <label for="login" class="form-label">
+            <span class="font-weight-bold">Login</span>
+          </label>
+          <input type="text" class="form-control form-control-lg" id="login" name="formLogin" [(ngModel)]="login" />
         </div>
+      </div>
 
-        <div class="row">
-            <div class="form-group text-center">
-              <label for="password" class="form-label">
-                <span class="font-weight-bold">Password</span>
-              </label>
-              <input type="password" class="form-control form-control-lg" id="password" name="formPassword" [(ngModel)]="password"/>
-            </div>
+      <div class="row">
+        <div class="form-group text-center">
+          <label for="password" class="form-label">
+            <span class="font-weight-bold">Password</span>
+          </label>
+          <input type="password" class="form-control form-control-lg" id="password" name="formPassword" [(ngModel)]="password" />
         </div>
+      </div>
 
-        <div class="row">
-            <div class="form-group text-center">
-              <label for="email" class="form-label">
-                <span class="font-weight-bold">Email</span>
-              </label>
-              <input type="email" class="form-control form-control-lg" id="email" name="formEmail" [(ngModel)]="email"/>
-            </div>
+      <div class="row">
+        <div class="form-group text-center">
+          <label for="email" class="form-label">
+            <span class="font-weight-bold">Email</span>
+          </label>
+          <input type="email" class="form-control form-control-lg" id="email" name="formEmail" [(ngModel)]="email" />
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col">
-            <button type="submit" class="btn btn-primary btn-block">
-              <span>Submit</span>
-            </button>
-          </div>
-          <div class="col">
-            <button class="btn btn-secondary btn-block" (click)="cancel()">
-              <span>Cancel</span>
-            </button>
-          </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>Submit</span>
+          </button>
         </div>
-      </form>
-    </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" (click)="cancel()">
+            <span>Cancel</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <modal-content *ngIf="isSuccessModalShown" [title]="successModalTitle" [content]="successModalContent" (onClose)="handleSuccess($event)"></modal-content>
 <modal-content *ngIf="isErrorModalShown" [title]="errorModalTitle" [content]="errorModalContent" (onClose)="handleError($event)"></modal-content>

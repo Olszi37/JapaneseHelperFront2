@@ -31,7 +31,7 @@ export class HiraganaLearnComponent implements OnInit {
   doneTitle: string = 'End of session'; //daj se tytuły jakie chcesz nie wiem co tu dać;
   exitTitle: string = 'Cancel session';
 
-  constructor(private recordService:RecordService, private flashcardService:FlashcardService,  private router:Router, private activatedRoute:ActivatedRoute) {
+  constructor(private recordService: RecordService, private flashcardService: FlashcardService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class HiraganaLearnComponent implements OnInit {
     this.recordService.getFlashcards(this.type, null).subscribe((flashcards: any[]) => {
       let flashcardsIn = flashcards;
       this.flashcards = flashcardsIn;
-      if(this.flashcards.length) {
+      if (this.flashcards.length) {
         this.total = this.flashcards.length;
         this.preparedFlashcards = this.flashcardService.prepareFlashcards(flashcardsIn);
       }
@@ -47,19 +47,23 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   getFlashcard() {
-    if(this.current < this.total) {
+    if (this.current < this.total) {
       return this.preparedFlashcards[this.current];
     }
   }
 
   getCorrectSign() {
-    if(this.current < this.total) {
+    if (this.current < this.total) {
       return this.getProperSide();
     }
   }
 
+  isSignOption() {
+    return this.option === 'signFirst';
+  }
+
   getProperSide() {
-    if (this.option === 'signFirst') {
+    if (this.isSignOption()) {
       return this.flashcards[this.current].correct.sign;
     } else {
       return this.flashcards[this.current].correct.reading;
@@ -67,7 +71,7 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   nextFlashcard() {
-    if(this.current >= this.total - 1){
+    if (this.current >= this.total - 1) {
       this.endLearningSession();
       this.current++;
     } else {
@@ -91,12 +95,12 @@ export class HiraganaLearnComponent implements OnInit {
 
   endLearningSession() {
     this.saveRecords();
-    this.showDoneModal(); //modal z wynikiem tutaj zbierz informacje i przekaz info w doneContent
+    this.showDoneModal();
   }
 
   saveRecords() {
     let records = this.flashcardService.calculateRecords(this.records, this.flashcards);
-    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.total);
+    this.doneContent = this.flashcardService.calculateLearnInfo(records, this.current - 1);
     this.recordService.saveFlashcards(this.type, records);
   }
 
@@ -105,27 +109,23 @@ export class HiraganaLearnComponent implements OnInit {
   }
 
   showDoneModal() {
-    this.isDoneModalShown = true; //pokaz modal po zakonczeniu testu
+    this.isDoneModalShown = true;
   }
 
   showExitModal() {
-    this.isExitModalShown = true; //pokaz modal przy cancel
+    this.isExitModalShown = true;
   }
 
   handleDone(event) {
-    this.router.navigateByUrl("/main"); //po kliknieciu ok w modalu przejdz do main
+    this.router.navigateByUrl("/main");
   }
 
   handleExitWithYes(event) {
-    //yes klikniety - wyswietl modal z wynikiem
-    //tu stworz sobie funkcje tam wyliczającą co trzeba i wyswietlająca co chcesz w modalu
-    //jak chcesz to w modal-content-component mozesz pozmieniac co tam chcesz zeby bylo przekazywane
-    //bo ja nie mam jak przetestować i w sumie nie wiem jak działa ta cała nauka znaków
     this.isExitModalShown = false
     this.showDoneModal();
   }
 
   handleExitWithNo(event) {
-    this.isExitModalShown = false; //schowaj modal - kontynuuj nauke
+    this.isExitModalShown = false;
   }
 }
