@@ -14,3 +14,7 @@
 .label {
     color: rgb(239, 208, 248);
 }
+
+.padded-bttm {
+  padding-bottom: 15px;
+}

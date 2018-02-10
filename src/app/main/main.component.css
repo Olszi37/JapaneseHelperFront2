@@ -36,3 +36,15 @@
 .jp-font {
     font-family: Meiryo;
 }
+
+.padded {
+  padding: 10px;
+}
+
+.btn-big {
+  min-width: 75px;
+}
+
+.hr-color {
+  border-color: #351449;
+}

@@ -1,10 +1,8 @@
-<div class="contrainer-fluid">
-
-  <div class="row" *ngIf="checkShowLevels()">
-    <div class="col-lg-2">
+  <div class="row padded-bttm" *ngIf="checkShowLevels()">
+    <div class="col-md-3 ml-md-auto text-left">
       <label class="font-weight-bold label">Level</label>
     </div>
-    <div class="col-lg-6">
+    <div class="col-md-3 mr-auto text-left">
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-outline-primary" [class.active]="true">
           <input type="checkbox" [(ngModel)]="level" [value]="'N5'" checked autocomplete="off" name="level" #n5 (click)="levelSelect()">N5
@@ -23,13 +21,14 @@
         </label>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-2">
+    </div>
+
+  <div class="row padded-bttm">
+    <div class="col-md-3 ml-md-auto text-left">
       <label class="font-weight-bold label">Flashcard side</label>
     </div>
-    <div class="col-lg-6">
+    <div class="col-md-3 mr-auto text-left">
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Guess answer by signs" [class.active]="isRadioActive('signFirst')">
           <input type="radio" name="options" id="option1" [value]="'signFirst'" [(ngModel)]="selectedOption" autocomplete="off" checked>
@@ -41,6 +40,7 @@
         </label>
       </div>
     </div>
+
   </div>
 
   <div class="row justify-content-center">
@@ -48,4 +48,3 @@
       <strong>Start learning!</strong>
     </button>
   </div>
-</div>
